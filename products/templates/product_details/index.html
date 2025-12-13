@@ -1,50 +1,34 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Деталі продукту</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/">Інтернет-магазин</a>
-        </div>
-    </nav>
+{% extends "layout.html" %} {% block content %}
 
-    <div class="container mt-4">
-        <a href="/" class="btn btn-secondary mb-3">← Назад до каталогу</a>
+<div class="container mt-4">
+    <a href="/" class="btn btn-secondary mb-3">← Назад до каталогу</a>
         
-        <div class="row">
-            <div class="col-md-6">
-                <img src="https://via.placeholder.com/500x500" class="img-fluid rounded" alt="Продукт">
-            </div>
-            <div class="col-md-6">
-                <h1>Назва продукту</h1>
-                <h3 class="text-success mb-4">₴999</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ product.image_url }}" class="img-fluid rounded" alt="Продукт">
+        </div>
+        <div class="col-md-6">
+            <h1>{{ product.name }}</h1>
+            <h3 class="text-success mb-4">₴{{ product.price }}</h3>
                 
-                <h4>Опис</h4>
-                <p>Детальний опис продукту. Тут буде повна інформація про характеристики, особливості та переваги товару.</p>
+            <h4>Опис</h4>
+            <p>{{ product.description }}</p>
                 
-                <h4 class="mt-4">Характеристики</h4>
-                <ul>
-                    <li>Характеристика 1</li>
-                    <li>Характеристика 2</li>
-                    <li>Характеристика 3</li>
-                </ul>
+            <h4 class="mt-4">Характеристики</h4>
+            <ul>
+                <li>Характеристика 1</li>
+                <li>Характеристика 2</li>
+                <li>Характеристика 3</li>
+            </ul>
                 
-                <h4 class="mt-4">Наявність</h4>
-                <p><span class="badge bg-success">В наявності</span></p>
+            <h4 class="mt-4">Наявність</h4>
+            <p><span class="badge bg-success">В наявності : {{ product.stock }}</span></p>
                 
-                <div class="mt-4">
-                    <button class="btn btn-success btn-lg">Додати в кошик</button>
-                    <button class="btn btn-outline-secondary btn-lg">♡ В обране</button>
-                </div>
+            <div class="mt-4">
+                <button class="btn btn-success btn-lg">Додати в кошик</button>
+                <button class="btn btn-outline-secondary btn-lg">♡ В обране</button>
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+{% endblock %}
