@@ -1,0 +1,44 @@
+[ 
+    {
+        "model": "products.Product",
+        "pk": 1,
+        "fields": {
+            "name": "Wireless Headphones",
+            "image_url": "https://www.cornellstore.com/site/Product_images/11041317_media-Midnight-01.jpg",
+            "description": "High-quality wireless headphones with noise cancellation.",
+            "price": "249.99",
+            "stock": 10,
+            "category": "electronics",
+            "discount": 20,
+            "created_at": "2024-06-15T10:00:00Z"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 2,
+        "fields": {
+            "name": "Smartwatch",
+            "image_url": "https://m.media-amazon.com/images/I/815BFpsSAHL._AC_UY1100_.jpg",
+            "description": "Stylish smartwatch with fitness tracking.",
+            "price": "199.99",
+            "stock": 15,
+            "category": "electronics",
+            "discount": 15,
+            "created_at": "2024-06-15T10:00:00Z"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 3,
+        "fields": {
+            "name": "Leather Jacket",
+            "image_url": "https://m.media-amazon.com/images/I/71S4pvNbaOL._AC_UY1000_.jpg",
+            "description": "Stylish leather jacket for all seasons.",
+            "price": "349.99",
+            "stock": 8,
+            "category": "clothing",
+            "discount": 25,
+            "created_at": "2024-06-15T10:00:00Z"
+        }
+    }
+]

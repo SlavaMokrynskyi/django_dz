@@ -1,0 +1,145 @@
+{% extends "admin_panel_layout.html" %} {% block content %}
+    <div class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h2">Управління продуктами</h1>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="list-group">
+                    {% for product in products %}
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="flex-grow-1">
+                                <a class="text-decoration-none text-dark fw-semibold" data-bs-toggle="collapse" href="#product{{ product.id }}" role="button">
+                                    <i class="bi bi-chevron-right me-2"></i>{{ product.name }}
+                                </a>
+                            </div>
+                            <form method="post" action="delete-product/{{ product.id }}/" class="d-inline" onsubmit="return confirm('Ви впевнені, що хочете видалити цей продукт?');">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Видалити
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <div class="collapse mt-3" id="product{{ product.id }}">
+                            <div class="card card-body bg-light">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="img-fluid rounded">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <table class="table table-sm">
+                                            <tbody>
+                                                <tr>
+                                                    <th width="30%">ID:</th>
+                                                    <td>{{ product.id }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Назва:</th>
+                                                    <td>{{ product.name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Опис:</th>
+                                                    <td>{{ product.description }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Ціна:</th>
+                                                    <td>${{ product.price }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Залишок:</th>
+                                                    <td>{{ product.stock }} шт.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Категорія:</th>
+                                                    <td>{{ product.get_category_display }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Знижка:</th>
+                                                    <td>{{ product.discount }}%</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Створено:</th>
+                                                    <td>{{ product.created_at|date:"d.m.Y H:i" }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>URL зображення:</th>
+                                                    <td><small class="text-muted">{{ product.image_url }}</small></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="text-center py-5 text-muted">
+                        <i class="bi bi-inbox fs-1"></i>
+                        <p class="mt-3">Продуктів ще немає. Додайте перший продукт!</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно додавання продукту -->
+    <!-- <div class="modal fade" id="addProductModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Додати новий продукт</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+               
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Назва продукту</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image_url" class="form-label">URL зображення</label>
+                            <input type="url" class="form-control" id="image_url" name="image_url" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Опис</label>
+                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="price" class="form-label">Ціна</label>
+                                <input type="number" step="0.01" class="form-control" id="price" name="price" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="stock" class="form-label">Залишок</label>
+                                <input type="number" class="form-control" id="stock" name="stock" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="discount" class="form-label">Знижка (%)</label>
+                                <input type="number" class="form-control" id="discount" name="discount" value="0">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Категорія</label>
+                            <select class="form-select" id="category" name="category" required>
+                                <option value="">Виберіть категорію</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="books">Books</option>
+                                <option value="furniture">Furniture</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                        <button type="submit" class="btn btn-primary">Додати продукт</button>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
