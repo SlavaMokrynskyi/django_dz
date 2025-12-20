@@ -10,7 +10,7 @@
                 <h5 class="card-title">{{ p.name }}</h5>
                 <p class="card-text">{{ p.description }}</p>
                 <p class="text-success fw-bold">₴{{ p.price }}</p>
-                <a href="/product-details/{{ p.id }}" class="btn btn-primary">Детальніше</a>
+                <a href="{% url 'product_details' p.id %}" class="btn btn-primary">Детальніше</a>
             </div>
         </div>
     </div>

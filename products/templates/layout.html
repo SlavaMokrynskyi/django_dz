@@ -14,7 +14,10 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Інтернет-магазин</a>
+            <a class="navbar-brand" href="{% url 'product_list' %}">Інтернет-магазин</a>
+        </div>
+        <div class="container">
+            <a class="navbar-link" href="{% url 'admin_panel' %}">Адмін-панель</a>
         </div>
     </nav>
     <main class="container py-4">{% block content %} {% endblock %}</main>
