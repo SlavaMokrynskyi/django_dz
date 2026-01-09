@@ -7,4 +7,5 @@ urlpatterns = [
     path('admin-panel/', views.admin_panel, name='admin_panel'),
     path('delete-product/<int:id>/', views.delete_product, name='delete_product'),
     path('add-product/', views.add_product, name='add_product'),
+    path('update-product/<int:id>/', views.update_product, name='update_product'),
 ]
