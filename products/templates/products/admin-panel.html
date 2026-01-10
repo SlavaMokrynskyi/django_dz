@@ -31,7 +31,10 @@
                             <div class="card card-body bg-light">
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
-                                        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="img-fluid rounded">
+                                        <img 
+                                            src = "{% if product.image %}{{ product.image.url}}{%elif product.image_url %}{{ product.image_url }}{% else %}https://png.pngtree.com/png-vector/20221125/ourmid/pngtree-no-image-available-icon-flatvector-illustration-picture-coming-creative-vector-png-image_40968940.jpg{% endif %}"
+                                            alt="{{ product.name }}" 
+                                            class="img-fluid rounded">
                                     </div>
                                     <div class="col-md-8">
                                         <table class="table table-sm">

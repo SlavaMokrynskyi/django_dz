@@ -21,10 +21,9 @@ def delete_product(request, id):
     product.delete()
     return redirect('admin_panel')
 
-
 def add_product(request):
     if request.method == 'POST':
-        product_form = ProductForm(request.POST)
+        product_form = ProductForm(request.POST, request.FILES)
         if product_form.is_valid():
             product_form.save()
             return redirect('admin_panel')
@@ -34,7 +33,7 @@ def add_product(request):
 def update_product(request, id):
     product = get_object_or_404(Product, pk=id)
     if request.method == 'POST':
-        product_form = ProductForm(request.POST, instance=product)
+        product_form = ProductForm(request.POST, request.FILES,instance=product)
         if product_form.is_valid():
             product_form.save()
             return redirect('admin_panel')
