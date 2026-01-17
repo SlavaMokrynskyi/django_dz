@@ -3,12 +3,12 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from products.forms.product import ProductForm
 from products.models import Product
-
+from favorites.favorites import get_favorite_products
 
 # Create your views here.
 def product_list(request):
     products = Product.objects.all()
-    return render(request, "products/index.html", {"products": products})
+    return render(request, "products/index.html", {"products": products,"fav_ids": get_favorite_products(request),})
 
 
 def product_details(request, id):

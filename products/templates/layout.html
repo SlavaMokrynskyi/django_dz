@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="uk">
     <head>
@@ -20,6 +21,9 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'product_list' %}">
                     Інтернет-магазин
+                </a>
+                <a class="nav-link text-white" href="{% url 'favorites' %}">
+                    Улюблені
                 </a>
                 <a class="nav-link text-white" href="{% url 'admin_panel' %}">
                     Адмін-панель
