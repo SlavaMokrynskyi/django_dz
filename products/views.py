@@ -5,28 +5,15 @@ from products.forms.product import ProductForm
 from products.models import Product
 from favorites.favorites import get_favorite_products
 
-# Create your views here.
-def product_list(request):
-    products = Product.objects.all()
-    return render(request, "products/index.html", {"products": products,"fav_ids": get_favorite_products(request),})
-
-
 def product_details(request, id):
     product = Product.objects.get(pk=id)
     return render(request, "products/product_details.html", {"product": product})
-
-
-def admin_panel(request):
-    products = Product.objects.all()
-    return render(request, "products/admin-panel.html", {"products": products})
-
 
 def delete_product(request, id):
     product = get_object_or_404(Product, pk=id)
     product.delete()
     messages.success(request, "Product deleted successfully")
     return redirect("admin_panel")
-
 
 def add_product(request):
     if request.method == "POST":

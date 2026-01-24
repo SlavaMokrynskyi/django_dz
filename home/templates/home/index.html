@@ -1,14 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<h1 class="mb-4">Products (Fav: {{ fav_count }})</h1>
-
-<!-- Кнопки фільтрації -->
-<div class="mb-3">
-    <a href="{% url 'index' %}" class="btn btn-secondary btn-sm">All Products</a>
-    <a href="{% url 'favorites' %}" class="btn btn-success btn-sm">Favorites</a>
-</div>
-
+<h1 class="mb-4">{% if filter_by_favorites %}Favorites{% else %}Products{% endif %}</h1>
 <div class="row g-4">
   {% for p in products %}
   <div class="col-12 col-sm-6 col-lg-4">

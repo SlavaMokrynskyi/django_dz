@@ -1,14 +1,14 @@
 {% extends "layout.html" %} {% block content %}
 
 <div class="container mt-4">
-    <a href="{% url 'product_list' %}" class="btn btn-secondary mb-3">
+    <a href="{% url 'index' %}" class="btn btn-secondary mb-3">
         ← Назад до каталогу
     </a>
 
     <div class="row">
         <div class="col-md-6">
             <img
-                src="{{ product.image_url }}"
+                src="{% if product.image %}{{ product.image.url }}{% elif product.image_url %}{{ product.image_url }}{% else %}https://png.pngtree.com/png-vector/20221125/ourmid/pngtree-no-image-available-icon-flatvector-illustration-picture-coming-creative-vector-png-image_40968940.jpg{% endif %}"
                 class="img-fluid rounded"
                 alt="{{ product.name }}"
             />
