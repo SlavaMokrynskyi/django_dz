@@ -1,7 +1,24 @@
 {% extends "layout.html" %}
 {% block content %}
+  <h2 class="text-2xl font-bold mb-3">
+    {% if filter_by_favorites %}Favorites{% else %}Products{% endif %}
+  </h2>
+  
+    <!-- Фільтр категорій -->
+<form method="get" class="mb-3">
+  {% if request.GET.filter_search %}
+    <input type="hidden" name="filter_search" value="{{ request.GET.filter_search }}">
+  {% endif %}
+  <label for="category">Category:</label>
+    <select name="category" id="category" onchange="this.form.submit()">
+      <option value="all" {% if not selected_category or selected_category == 'all' %}selected{% endif %}>All Categories</option>
+      <option value="electronics" {% if selected_category == 'electronics' %}selected{% endif %}>Electronics</option>
+      <option value="clothing" {% if selected_category == 'clothing' %}selected{% endif %}>Clothing</option>
+      <option value="books" {% if selected_category == 'books' %}selected{% endif %}>Books</option>
+      <option value="furniture" {% if selected_category == 'furniture' %}selected{% endif %}>Furniture</option>
+    </select>
+  </form>
 
-<h1 class="mb-4">{% if filter_by_favorites %}Favorites{% else %}Products{% endif %}</h1>
 <div class="row g-4">
   {% for p in products %}
   <div class="col-12 col-sm-6 col-lg-4">
