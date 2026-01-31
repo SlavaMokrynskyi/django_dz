@@ -3,7 +3,7 @@ from django.shortcuts import render
 from products.models import Product
 from favorites.favorites import get_favorite_products, get_count_of_favorite_products
 
-def index(request, filter_by_favorites=False):
+def index(request, filter_by_favorites=False, filter_by_basket=False):
     products = Product.objects.all()
 
     filter_text = request.GET.get("filter_search", "")

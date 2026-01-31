@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'products',
     'home',
     'favorites',
+    'basket',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'favorites.context_processor.favorite_list_count',
+                'basket.context_processor.basket_list_count'
             ],
         },
     },

@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('products/', include('products.urls')),
     path('favorites/', include('favorites.urls')),
+    path('basket/', include('basket.urls'))
 ]
 
 if settings.DEBUG:

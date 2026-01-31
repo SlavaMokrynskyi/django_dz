@@ -16,7 +16,7 @@
 
         <div class="col-md-6">
             <h1>{{ product.name }}</h1>
-            <h3 class="text-success mb-4">₴{{ product.price }}</h3>
+            <h3 class="text-success mb-4">${{ product.price }}</h3>
 
             <h4>Опис</h4>
             <p>{{ product.description }}</p>
@@ -29,7 +29,15 @@
             </p>
 
             <div class="mt-4 d-flex gap-2">
-                <button class="btn btn-success btn-lg">Додати в кошик</button>
+                {% if product.stock > 0 %}
+                <form method="get" action="{% url 'add_basket_product' product.id %}" class="d-flex gap-2 align-items-center">
+                    <input type="number" name="qty" value="1" min="1" max="{{ product.stock }}" class="form-control" style="width:100px;" />
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                    <button type="submit" class="btn btn-success btn-lg">Додати в кошик</button>
+                </form>
+                {% else %}
+                <button class="btn btn-secondary btn-lg" disabled>Немає в наявності</button>
+                {% endif %}
             </div>
         </div>
     </div>
